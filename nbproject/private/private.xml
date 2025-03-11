@@ -12,15 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/Scheduler.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/SJF_P.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/SJF_NP.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/OS.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/SystemOS.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/TieBreakerType.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/Process.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/ReadyQueue.java</file>
-            <file>file:/D:/Repositories/OperatingSystemsPedro/ur_os_pp_public-main/src/ur_os/RoundRobin.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/SystemOS.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/ProcessBurstList.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/Process.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/MFQ.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/SJF_NP.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/OS.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/ReadyQueue.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/Scheduler.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/CPU.java</file>
+            <file>file:/D:/Repositories/OperatingSystems/src/ur_os/IOQueue.java</file>
         </group>
     </open-files>
 </project-private>

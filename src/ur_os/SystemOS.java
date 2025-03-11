@@ -141,7 +141,7 @@ public class SystemOS implements Runnable{
     }
     
     public void initSimulationQueueSimpler2(){
-        
+       
         Process p = new Process(false);
         p.setPriority(0);
         ProcessBurst temp = new ProcessBurst(15,ProcessBurstType.CPU);    

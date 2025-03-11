@@ -19,7 +19,7 @@ public class OS {
     private static int process_count = 0;
     SystemOS system;
     CPU cpu;
-    public final SchedulerType SCHEDULER_TYPE = SchedulerType.RR;
+    public final SchedulerType SCHEDULER_TYPE = SchedulerType.MFQ;
     // SFJ_P -> LARGEST_PID
     // SJF_NP -> LARGEST_PID
     

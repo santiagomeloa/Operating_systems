@@ -46,15 +46,12 @@ public class ReadyQueue {
                 s = new MFQ(os,new RoundRobin(os,3),new RoundRobin(os,6),new FCFS(os));
                 break;
                 
-            case FAIR   :
-                
+            case FAIR:
                 break;
         }
-        
-        
     }
     
-    public ReadyQueue(OS OS, Scheduler s){
+    public ReadyQueue(OS os, Scheduler s){
         this.os = os;
         this.s = s;
     }
@@ -71,6 +68,7 @@ public class ReadyQueue {
         s.update();
     }
         
+    @Override
     public String toString(){
         
         return s.toString();

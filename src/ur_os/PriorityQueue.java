@@ -34,14 +34,26 @@ public class PriorityQueue extends Scheduler{
     
     @Override
     public void addProcess(Process p){
-       //Overwriting the parent's addProcess(Process p) method may be necessary in order to decide what to do with process coming from the CPU.
-       //On which queue should the process go?
+       if (!schedulers.isEmpty()) {
+            schedulers.get(p.getPriority()).addProcess(p); 
+        }
         
     }
     
-    void defineCurrentScheduler(){
-        //This methos is suggested to help you find the scheduler that should be the next in line to provide processes... perhaps the one with process in the queue?
+    private int defineCurrentScheduler() {
+        if (!os.isCPUEmpty()) {
+            Process cpuProcess = os.cpu.getProcess();
+            return cpuProcess.getPriority(); // Return the priority of the process on CPU
+        } else {
+            for (int i = 0; i < schedulers.size(); i++) {
+                if (!schedulers.get(i).isEmpty()) {
+                    return i; // Return the index of the first non-empty scheduler
+                }
+            }
+        }
+        return -1; // If all schedulers are empty, return -1
     }
+   
     
    
     @Override
@@ -51,13 +63,44 @@ public class PriorityQueue extends Scheduler{
         //Suggestion: if the CPU is empty, just find the next scheduler based on the order and the existence of processes
         //if the CPU is not empty, you need to define that will happen with the process... if it fully preemptive, and there are process pending in higher queue, does the
         //scheduler removes a process from the CPU or does it let it finish its quantum? Make this decision and justify it.
-  
+        
+         int currentSchedulerIndex = defineCurrentScheduler();
+        
+        if (currentSchedulerIndex != -1) {
+            Scheduler currentScheduler = schedulers.get(currentSchedulerIndex);
+            
+            if (!os.isCPUEmpty()) {
+                Process cpuProcess = os.cpu.getProcess();                
+                if (cpuProcess.getPriority() == currentSchedulerIndex) {
+                    currentScheduler.getNext(os.isCPUEmpty());
+                    if (os.isCPUEmpty()) {
+                        addProcess(cpuProcess); // Add the process back to its respective queue
+                        addContextSwitch();
+                        currentSchedulerIndex = defineCurrentScheduler(); // Re-evaluate the current scheduler
+                        if (currentSchedulerIndex != -1) {
+                            currentScheduler = schedulers.get(currentSchedulerIndex);
+                            currentScheduler.getNext(os.isCPUEmpty());
+                        }
+                    }
+                }
+            } else {
+                currentScheduler.getNext(os.isCPUEmpty());
+                addContextSwitch();
+            }
+        }
+        
+        // Update waiting time for all processes
+        for (Scheduler s : schedulers) {
+            for (Process p : s.processes) {
+                p.setWaitingTime(p.getWaitingTime() + 1);
+            }
+        }
     }
+    
     
     @Override
     public void newProcess(boolean cpuEmpty) {} //Non-preemtive in this event
 
     @Override
-    public void IOReturningProcess(boolean cpuEmpty) {} //Non-preemtive in this event
-    
+    public void IOReturningProcess(boolean cpuEmpty) {} //Non-preemtive in this event
 }

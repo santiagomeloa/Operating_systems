@@ -72,6 +72,10 @@ public class ProcessBurstList {
     }
     
     public boolean isCurrentBurstCPU(){
+        System.out.print("Hola: ");
+        System.out.println(bursts.get(currentBurst).getType());
+        System.out.print("Hola2: ");
+        System.out.println(ProcessBurstType.CPU);
         return bursts.get(currentBurst).getType() == ProcessBurstType.CPU;
     }
     
