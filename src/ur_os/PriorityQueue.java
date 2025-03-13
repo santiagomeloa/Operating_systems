@@ -64,7 +64,7 @@ public class PriorityQueue extends Scheduler{
         //if the CPU is not empty, you need to define that will happen with the process... if it fully preemptive, and there are process pending in higher queue, does the
         //scheduler removes a process from the CPU or does it let it finish its quantum? Make this decision and justify it.
         
-         int currentSchedulerIndex = defineCurrentScheduler();
+        int currentSchedulerIndex = defineCurrentScheduler();
         
         if (currentSchedulerIndex != -1) {
             Scheduler currentScheduler = schedulers.get(currentSchedulerIndex);

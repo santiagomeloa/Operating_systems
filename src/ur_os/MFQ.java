@@ -75,7 +75,6 @@ public class MFQ extends Scheduler{
             defineCurrentScheduler();
             schedulers.get(currentScheduler).getNext(true);
         }
-        
     }
     
     @Override
