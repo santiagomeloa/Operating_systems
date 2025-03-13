@@ -45,18 +45,14 @@ public class RoundRobin extends Scheduler{
             if (cont == q) { // Quantum agotado
                 if (this.singlequeue) {
                     addProcess(os.cpu.extractProcess());
-                    cpuEmpty = true;
-                    
+                    cpuEmpty = true;            
                 } else {
                     os.cpu.removeProcess();
                     addContextSwitch();
                 }
-<<<<<<< HEAD
-=======
                 os.interrupt(InterruptType.SCHEDULER_CPU_TO_RQ, p);
                 addContextSwitch();
                 resetCounter();
->>>>>>> 0377456ce1e9e7bb846035bb7883e5dee77cea1a
             }
         }
 
@@ -66,13 +62,9 @@ public class RoundRobin extends Scheduler{
             processes.remove();
 
             os.interrupt(InterruptType.SCHEDULER_RQ_TO_CPU, p);
-<<<<<<< HEAD
-
-            addContextSwitch();
-=======
             addContextSwitch();
             resetCounter();
->>>>>>> 0377456ce1e9e7bb846035bb7883e5dee77cea1a
+
         }
     }
 
