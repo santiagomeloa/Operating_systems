@@ -50,18 +50,21 @@ public class Process implements Comparable{
             priority = r.nextInt(10);
         }
         state = ProcessState.NEW;
+        currentScheduler = 0;
     }
     
     public Process(int pid, int time_init) {
         this();
         this.pid = pid;
         this.time_init = time_init;
+        currentScheduler = 0;
     }
     
     public Process(Process p) {
         this.pid = p.pid;
         this.time_init = p.time_init;
         this.pbl = new ProcessBurstList(p.getPBL());
+        this.currentScheduler = p.currentScheduler;
     }
 
     public boolean advanceBurst(){

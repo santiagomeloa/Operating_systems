@@ -32,6 +32,7 @@ public abstract class Scheduler {
     public abstract void newProcess(boolean cpuEmpty); //Implement for Preemtive schedulers
     public abstract void IOReturningProcess(boolean cpuEmpty); //Implement for Preemtive schedulers
     
+    
     public void addContextSwitch(){
         this.totalContextSwitches++;
     }

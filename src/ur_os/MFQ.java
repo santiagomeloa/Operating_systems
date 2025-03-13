@@ -35,7 +35,6 @@ public class MFQ extends Scheduler{
     @Override
     public void addProcess(Process p){
         //Overwriting the parent's addProcess(Process p) method may be necessary in order to decide what to do with process coming from the CPU.
-
         ProcessState ps = p.getState();
         int currentSchedulerProcess = p.getCurrentScheduler();
         if (ps == ProcessState.CPU){
@@ -72,12 +71,11 @@ public class MFQ extends Scheduler{
         Scheduler s = schedulers.get(this.currentScheduler);
         s.getNext(cpuEmpty);
         
-        //waiting time
-        //for(Scheduler s: schedulers){
-        //    for(Process p: s.processes){
-        //        p.setWaitingTime(p.getWaitingTime() + 1);
-        //    }
-        //}
+        if (os.isCPUEmpty()) {
+            defineCurrentScheduler();
+            schedulers.get(currentScheduler).getNext(true);
+        }
+        
     }
     
     @Override
@@ -85,5 +83,6 @@ public class MFQ extends Scheduler{
 
     @Override
     public void IOReturningProcess(boolean cpuEmpty) {} //Non-preemtive in this event
+    
     
 }
